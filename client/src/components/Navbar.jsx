@@ -39,7 +39,7 @@ export default function Navbar() {
               <Text fontWeight='extrabold'>Tech Lines</Text>
             </Flex>
           </Link>
-          <HStack>
+          <HStack as='nav' spacing={4} display={{base: 'none', md: 'flex'}}>
             {links.map((link)=>(
               <NavLink key={link.linkName} path={link.path}>
                 {link.linkName}
@@ -60,7 +60,9 @@ export default function Navbar() {
               <Button 
                 as={ReactLink} 
                 to='/registration' 
-                m={2} fontSize='sm' 
+                m={2} 
+                display={{base: 'none', md: 'inline-flex'}}
+                fontSize='sm' 
                 fontWeight={600} 
                 _hover={{bg: 'orange.400'}} 
                 bg='orange.500' 
@@ -76,6 +78,9 @@ export default function Navbar() {
               {link.linkName}
             </NavLink>
           ))}
+          <NavLink key='sign up' path='/registration'>
+            Sign Up
+          </NavLink>
         </Stack>
       </Box> : null}
     </Box>
