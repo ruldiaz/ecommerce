@@ -8,7 +8,7 @@ const links = [
   {linkName: 'Products', path: '/products'},
   {linkName: 'ShoppingCart', path: '/cart'}
 ]
-
+// navlink function
 const NavLink = ({path, children}) => (
   <Link 
     as={ReactLink} 
