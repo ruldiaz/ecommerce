@@ -3,7 +3,7 @@ import { Center, Wrap, WrapItem } from '@chakra-ui/react';
 import { products } from '../products';
 
 const ProductsScreen = () => {
-    
+    // console.log(products)
     return (
         <Wrap spacing='30px' justify='center' minHeight='100vh'>
             {products.map((product) => (
