@@ -45,7 +45,7 @@ export default function ProductCard({product}){
             rounded='lg' 
             shadow='lg' 
             position='relative' >
-                {product.isNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
+                {product.productIsNew && <Circle size='10px' position='absolute' top={2} right={2} bg='green.300' />}
                 {product.stock <= 0 && <Circle size='10px' position='absolute' top={2} right={2} bg='red.300' />}
                 <Image src={product.image} alt={product.name} roundedTop='lg' />
 
@@ -55,7 +55,7 @@ export default function ProductCard({product}){
                             Sold out
                         </Badge>
                     )}
-                    {product.isNew && (
+                    {product.productIsNew && (
                         <Badge rounded='full' px='2' fontSize='0.8em' colorScheme='green'>
                             New
                         </Badge>
