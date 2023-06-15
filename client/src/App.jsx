@@ -3,10 +3,12 @@ import { BrowserRouter, useRoutes } from 'react-router-dom';
 import './App.css'
 import Navbar from './components/Navbar';
 import ProductsScreen from './screens/ProductsScreen';
+import CartScreen from './screens/CartScreen';
 
 function AppRoutes() {
   let routes = useRoutes([
-    { path: '/products', element: <ProductsScreen />}
+    { path: '/products', element: <ProductsScreen />},
+    { path: '/cart', element: <CartScreen />},
   ])
   return routes;
 }
