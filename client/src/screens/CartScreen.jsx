@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Flex, Heading, HStack, Link, Stack, useColorModeValue as mode, Spinner, Alert, AlertTitle, AlertIcon, AlertDescription, Wrap } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import CartItem from '../components/CartItem';
 
 export default function CartScreen() {
   const cartInfo = useSelector(state => state.cart);
@@ -42,7 +43,9 @@ export default function CartScreen() {
               Shopping Cart
             </Heading>
             <Stack spacing='6'>
-              {/* {CartItem} */}
+              {cart.map((cartItem)=>(
+                <CartItem key={cartItem.id} cartItem={cartItem} />
+              ))}
             </Stack>
           </Stack>
         <Flex direction='column' align='center' flex='1'>
