@@ -1,6 +1,6 @@
 import React from 'react';
 import { CloseButton, Flex, Select, useColorModeValue as mode, Stack, Image, Box, Text } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addCartItem } from '../redux/actions/cartActions';
 
 export default function CartItem({ cartItem }) {
@@ -22,7 +22,7 @@ export default function CartItem({ cartItem }) {
           dispatch(addCartItem(id, e.target.value))
         }}>
       {[...Array(stock).keys()].map((x)=>(
-        <option key={x+1} value={x + 1}>
+        <option key={x + 1} value={x + 1}>
           {x + 1}
         </option>
       ))}
