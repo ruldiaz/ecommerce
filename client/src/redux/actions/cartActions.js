@@ -3,6 +3,7 @@ import { setLoading, setError, cartItemAdd } from '../slices/cart';
 
 export const addCartItem = (id, qty) => async (dispatch) => {
   dispatch(setLoading(true));
+  
   try {
     const { data } = await axios.get(`http://localhost:3001/api/products/${id}`);
     const itemToAdd = {
