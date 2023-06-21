@@ -24,7 +24,7 @@ export default function CartOrderSummary(){
           <Text fontWeight='medium' color={mode('gray.600', 'gray.400')}>
             Subtotal
           </Text>
-          <Text fontWeight='medium'>{subtotal}</Text>
+          <Text fontWeight='medium'>$ {subtotal}</Text>
         </Flex>
         <Flex justify='space-between'>
           <Text fontWeight='medium' color={mode('gray.600', 'gray.400')}>
@@ -40,8 +40,14 @@ export default function CartOrderSummary(){
             )}
           </Text>
         </Flex>
-        <Flex fontSize='lg' fontWeight='semibold'>
-              {subtotal <= 1000 ? Number(subtotal) + Number(standarShipping) : subtotal}
+        <Flex justify='space-between'>
+          <Text fontSize='xl' fontWeight='extrabold'>
+            Total
+          </Text>
+          <Text fontSize='xl' fontWeight='extrabold'>
+            $ {subtotal <= 1000 ? Number(subtotal) + Number(standarShipping) : subtotal}
+          </Text>
+              
         </Flex>
       </Stack>
       <Button as={ReactLink} to='/checkout' colorScheme='orange' size='lg' fontSize='md' rightIcon={<FaArrowRight />} isLoading={buttonLoading} onClick={()=> checkoutHandler()}>
