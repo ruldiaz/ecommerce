@@ -26,7 +26,38 @@ export default function ProductScreen(){
 
   return (
     <Wrap spacing='30px' justify='center' minHeight='100vh'>
-      {loading ? <p>loading</p> : error  ? <p>error</p> : product && <p>product</p>} 
+      {loading ? (
+      <Stack direction='row' spacing={4}>
+        <Spinner mt={20} thickness='2px' speed='0.65s' emptyColor='gray.200' color='orange.500' size='xl' />
+      </Stack>
+       ) : error  ? (
+      <Alert status='error'>
+        <AlertIcon />
+        <AlertTitle>We are sorry!</AlertTitle>
+        <AlertDescription>{error}</AlertDescription>
+      </Alert> 
+        ) : (
+      product && 
+      <Box maxW={{base: '3xl', lg: '5xl'}} mx='auto' px={{base: '4', md: '8', lg: '12'}} py={{base: '6', md: '8', lg: '12'}}>
+        <Stack direction={{base: 'column', lg: 'row'}} align={{lg: 'flex-start'}}>
+          <Stack pr={{base: '0', md: '12'}} spacing={{base: '8', md: '4'}} flex='1.5' mb={{base: '12', md: 'none'}}>
+            {product.productIsNew && (
+            <Badge rounded='full' w='40px' fontSize='0.8em' colorScheme='green'>
+              New
+            </Badge>
+            )}
+            <Heading fontSize='2xl' fontWeight='extrabold'>
+              {product.name}
+            </Heading>
+            <Stack spacing='5'>
+              <Box>
+                
+              </Box>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Box>
+      )} 
     </Wrap>
   );
 }
