@@ -24,6 +24,15 @@ export default function ProductScreen(){
     dispatch(getProduct(id));
   }, [dispatch, id, cart]);
 
+  const changeAmount = (input) => {
+    if (input === 'plus' && amount < product.stock) {
+      setAmount(amount + 1);
+    }
+    if (input === 'minus' && amount > 1) {
+      setAmount(amount - 1);
+    }
+  }
+
   return (
     <Wrap spacing='30px' justify='center' minHeight='100vh'>
       {loading ? (
@@ -51,8 +60,31 @@ export default function ProductScreen(){
             </Heading>
             <Stack spacing='5'>
               <Box>
-                
+                <Text fontSize='xl'>$ {product.price}</Text>
+                <Flex>
+                  <HStack spacing='2px'>
+                    <StarIcon color='orange.500' />
+                    <StarIcon color={product.rating >= 2 ? 'orange.500' : 'gray.200'} />
+                    <StarIcon color={product.rating >= 3 ? 'orange.500' : 'gray.200'} />
+                    <StarIcon color={product.rating >= 4 ? 'orange.500' : 'gray.200'} />
+                    <StarIcon color={product.rating >= 5 ? 'orange.500' : 'gray.200'} />
+                  </HStack>
+                  <Text fontSize='md' fontWeight='bold' ml='4px'>
+                    {product.numberOfReviews} Reviews
+                  </Text>
+                </Flex>
               </Box>
+              <Text>{product.description}</Text>
+              <Text fontWeight={'bold'}>Quantity</Text>
+              <Flex w='170px' p='5px' border='1px' borderColor='gray.200' alignItems='center'>
+                <Button disabled={amount <= 1} onClick={()=>changeAmount('minus')} style={{ cursor: amount <= 1 ? 'not-allowed' : 'default' }}>
+                  <MinusIcon />
+                </Button>
+                <Text mx='30px'>{amount}</Text>
+                <Button disabled={amount >= product.stock} onClick={()=>changeAmount('plus')} style={{ cursor: amount >= product.stock ? 'not-allowed' : 'default' }}>
+                  <SmallAddIcon w='20px' h='25px' />
+                </Button>
+              </Flex>
             </Stack>
           </Stack>
         </Stack>
