@@ -33,6 +33,11 @@ export default function ProductScreen(){
     }
   }
 
+  const addItem = ()=>{
+    dispatch(addCartItem(product._id, amount));
+    toast({description: 'Item has been added.', status: 'success', isClosable: true})
+  }
+
   return (
     <Wrap spacing='30px' justify='center' minHeight='100vh'>
       {loading ? (
@@ -85,8 +90,34 @@ export default function ProductScreen(){
                   <SmallAddIcon w='20px' h='25px' />
                 </Button>
               </Flex>
+              <Button colorScheme='orange' onClick={()=>addItem()}>
+                Add to cart
+              </Button>
+              <Stack width='270px'>
+                <Flex alignItems='center'>
+                  <BiPackage size='20px' />
+                  <Text fontWeight='medium' fontSize='small' ml='2'>
+                    Free shipping if order is above $1000
+                  </Text>
+                </Flex>
+                <Flex alignItems='center'>
+                  <BiCheckShield size='20px' />
+                  <Text fontWeight='medium' fontSize='sm' ml='2'>
+                    2 year extended warranty
+                  </Text>
+                </Flex>
+                <Flex alignItems='center'>
+                  <BiSupport size='20px' />
+                  <Text fontWeight='medium' fontSize='sm' ml='2'>
+                    We're here for you 24/7
+                  </Text>
+                </Flex>
+              </Stack>
             </Stack>
           </Stack>
+          <Flex direction='column' align='center' flex='1' _dark={{bg: 'gray.900'}}>
+              <Image mb='30px' src={product.image} alt={product.name} />
+          </Flex>
         </Stack>
       </Box>
       )} 
