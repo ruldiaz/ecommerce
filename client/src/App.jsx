@@ -6,9 +6,11 @@ import ProductsScreen from './screens/ProductsScreen';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
 import Footer from './components/Footer';
+import LandingScreen from './screens/LandingScreen';
 
 function AppRoutes() {
   let routes = useRoutes([
+    { path: '/', element: <LandingScreen />},
     { path: '/products', element: <ProductsScreen />},
     { path: '/product/:id', element: <ProductScreen />},
     { path: '/cart', element: <CartScreen />},
