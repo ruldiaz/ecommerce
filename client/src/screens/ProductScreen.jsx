@@ -118,7 +118,31 @@ export default function ProductScreen(){
           <Flex direction='column' align='center' flex='1' _dark={{bg: 'gray.900'}}>
               <Image mb='30px' src={product.image} alt={product.name} />
           </Flex>
-        </Stack>
+          </Stack>
+          <Stack>
+            <Text fontSize='xl' fontWeight='bold'>
+              Reviews
+            </Text>
+            <SimpleGrid minChildWidth='300px' spacingX='40px' spacingY='20px'>
+              {product.reviews.map((review)=>(
+                <Box key={review._id}>
+                  <Flex spacing='2px' alignItems='center'>
+                    <StarIcon color='orange.500' />
+                    <StarIcon color={review.rating >= 2 ? 'orange.500' : 'gray.200'} />
+                    <StarIcon color={review.rating >= 3 ? 'orange.500' : 'gray.200'} />
+                    <StarIcon color={review.rating >= 4 ? 'orange.500' : 'gray.200'} />
+                    <StarIcon color={review.rating >= 5 ? 'orange.500' : 'gray.200'} />
+                    <Text fontWeight='semibold' ml='4px'>
+                      {review.title && review.tittle}
+                    </Text>
+                  </Flex>
+                  <Box py='12px'>{review.comment}</Box>
+                  <Text fontSize='sm' color='gray.400'>by {review.name}, {new Date(review.createdAt).toDateString()}</Text>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Stack>
+       
       </Box>
       )} 
     </Wrap>
