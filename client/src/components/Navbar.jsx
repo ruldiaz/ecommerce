@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Flex, HStack, Link, IconButton, Icon, Text, useDisclosure, Button, Stack, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
@@ -21,6 +21,7 @@ const NavLink = ({path, children}) => (
 export default function Navbar() {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [ isHovering, setIsHovering ] = useState(false);
 
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -33,9 +34,9 @@ export default function Navbar() {
           />
 
         <HStack>
-          <Link as={ReactLink} to='/'>
+          <Link as={ReactLink} to='/' style={{textDecoration: 'none'}} onMouseEnter={()=> setIsHovering(true)} onMouseLeave={()=>setIsHovering(false)}>
             <Flex alignItems='center'>
-              <Icon as={GiTechnoHeart} h={6} w={6} color='orange.400' />
+              <Icon as={GiTechnoHeart} h={6} w={6} color={isHovering ? 'cyan.400' : 'orange.400'} />
               <Text fontWeight='extrabold'>Tech Lines</Text>
             </Flex>
           </Link>

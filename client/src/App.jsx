@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import ProductsScreen from './screens/ProductsScreen';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
+import Footer from './components/Footer';
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -22,6 +23,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
           <AppRoutes />
+        <Footer />
       </BrowserRouter>
     </ChakraProvider>
   )
