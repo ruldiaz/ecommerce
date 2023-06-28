@@ -10,12 +10,13 @@ const genToken = (id) => {
   return jwt.sign({ id }, process.env.TOKEN_SECRET, {expiresIn: '60d'});
 };
 
+// POST login user
 const loginUser = asyncHandler(async(req, res)=> {
   const { email, password } = req.body;
 
   const user = await User.findOne({email});
 
-  if(user && (await user.matchPasswords(password))){
+  if(user && (await user.matchPassword(password))){
     res.json({
       _id: user._id,
       name: user.name,
