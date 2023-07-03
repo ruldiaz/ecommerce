@@ -28,7 +28,7 @@ export default function RegistrationScreen(){
 
   return (
     <Formik
-      initialValues={{email: '', password: '', name: ''}}
+      initialValues={{email: '', password: '', name: '', confirmPassword: ''}}
       validationSchema={Yup.object({
         name: Yup.string().required('A name is required.'),
         email: Yup.string().email('Invalid email.').required('An email address is required.'),
