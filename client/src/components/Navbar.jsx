@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Flex, HStack, Link, IconButton, Icon, Text, useDisclosure, Button, Stack, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, HStack, Link, IconButton, Icon, Text, useDisclosure, Button, Stack, useColorMode, useColorModeValue, useToast } from '@chakra-ui/react';
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { GiTechnoHeart } from 'react-icons/gi';
+import { useDispatch, useSelector } from 'react-redux' ;
+import { logout } from '../redux/actions/userActions';
 
 const links = [
   {linkName: 'Products', path: '/products'},
@@ -22,6 +24,15 @@ export default function Navbar() {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const [ isHovering, setIsHovering ] = useState(false);
+  const user = useSelector(state => state.user);
+  const {userInfo} = user;
+  const dispatch = useDispatch();
+  const toast = useToast();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    toast({description: 'You have been logged out.', status: 'success', isClosable: true});
+  }
 
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -55,6 +66,8 @@ export default function Navbar() {
                   alignSelf='center' 
                   onClick={()=>toggleColorMode()} />
             </NavLink>
+            {userInfo ? (<p>logged in</p>) 
+            : (<>
               <Button as={ReactLink} to='/login' p={2} fontSize='sm' fontWeight={400} variant='link'>
                 Sign In
               </Button>
@@ -70,6 +83,8 @@ export default function Navbar() {
                 color='white' >
                 Sign Up
               </Button>
+            </>)}
+
           </Flex>
       </Flex>
       {isOpen ? <Box pb={4} display={{md: 'none'}}>
