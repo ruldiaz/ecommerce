@@ -8,6 +8,7 @@ import ProductScreen from './screens/ProductScreen';
 import Footer from './components/Footer';
 import LandingScreen from './screens/LandingScreen';
 import LoginScreen from './screens/LoginScreen';
+import RegistrationScreen from './screens/RegistrationScreen';
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -16,6 +17,7 @@ function AppRoutes() {
     { path: '/product/:id', element: <ProductScreen />},
     { path: '/cart', element: <CartScreen />},
     { path: '/login', element: <LoginScreen />},
+    { path: '/registration', element: <RegistrationScreen />},
   ])
   return routes;
 }
