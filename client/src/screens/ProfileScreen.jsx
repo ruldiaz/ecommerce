@@ -41,8 +41,8 @@ export default function ProfileScreen(){
   }}>
     {(formik)=>(
       <Box minH='100vh' maxW={{base:'3xl', lg:'7xl'}} mx='auto' px={{base: '4', md:'8', lg:'12'}} py={{base: '6', md:'8', lg:'12'}}>
-        <Stack direction={{base: 'column', lg:'row'}} align={{lg: 'flex-start'}}>
-          <Stack pr={{base: '0', md:'10'}} flex='1.5' mb={{base:'2xl', md:'none'}}>
+        <Stack spacing='10' direction={{base: 'column', lg:'row'}} align={{lg: 'flex-start'}}>
+          <Stack flex='1.5' mb={{base:'2xl', md:'none'}}>
             <Heading fontSize='2xl' fontWeight='extrabold'>Profile</Heading>
             <Stack spacing='6'>
               <Stack spacing='6' as='form' onSubmit={formik.handleSubmit}>
@@ -68,7 +68,7 @@ export default function ProfileScreen(){
                   </FormControl>
                 </Stack>
                 <Stack spacing='6'>
-                  <Button color='orange' size='lg' fontSize='md' isLoading={loading} type='submit'>
+                  <Button colorScheme='orange' size='lg' fontSize='md' isLoading={loading} type='submit'>
                     Save
                   </Button>
                 </Stack>
