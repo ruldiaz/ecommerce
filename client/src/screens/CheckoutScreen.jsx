@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Heading, Stack, Flex } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
+import CheckoutOrderSummary from '../components/CheckoutOrderSummary';
 
 export default function CheckoutScreen(){
   const user = useSelector(state => state.user);
@@ -27,7 +28,7 @@ export default function CheckoutScreen(){
           </Stack>
         </Stack>
         <Flex direction='column' align='center' flex='1'>
-          {/* <CheckoutOrderSummary /> */}
+          <CheckoutOrderSummary />
         </Flex>
       </Stack>
   </Box> 
