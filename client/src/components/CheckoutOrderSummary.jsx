@@ -5,6 +5,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import { PhoneIcon, EmailIcon, ChatIcon } from '@chakra-ui/icons';
 import { createOrder } from '../redux/actions/orderActions';
 import CheckoutItem from './CheckoutItem';
+import PayPalButton from './PayPalButton';
 
 export default function CheckoutOrderSummary(){
   const colorMode = mode('gray.600', 'gray.400');
@@ -61,7 +62,7 @@ export default function CheckoutOrderSummary(){
             )}
           </Text>
         </Flex>
-
+          <PayPalButton total={total} onPaymentSuccess={onPaymentSuccess} onPaymentError={onPaymentError} />
         <Flex justify='space-between'>
           <Text fontSize='lg' fontWeight='semibold' >
             Total
@@ -71,6 +72,7 @@ export default function CheckoutOrderSummary(){
           </Text>
         </Flex>
       </Stack>
+
       <Box align='center'>
         <Text fontSize='sm'>Have questions ? or need help to complete your order ?</Text>
         <Flex justifyContent='center' color={mode('orange.500', 'orange.100')}>
