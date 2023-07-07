@@ -3,11 +3,16 @@ import { Flex, Heading, Stack, Text, useColorModeValue as mode, Badge, Box, Link
 import { useSelector, useDispatch } from 'react-redux';
 import { Link as ReactLink } from 'react-router-dom';
 import { PhoneIcon, EmailIcon, ChatIcon } from '@chakra-ui/icons';
-import { createOrder } from '../redux/actions/orderActions';
+import { createOrder, resetOrder } from '../redux/actions/orderActions';
 import CheckoutItem from './CheckoutItem';
 import PayPalButton from './PayPalButton';
+import PaymentSuccessModal from './PaymentSuccessModal';
+import PaymentErrorModal from './PaymentErrorModal';
+import { resetCart } from '../redux/actions/cartActions';
 
 export default function CheckoutOrderSummary(){
+  const {onClose: onErrorClose, onOpen: onErrorOpen, isOpen: isErrorOpen} = useDisclosure();
+  const {onClose: onSuccessClose, onOpen: onSuccessOpen, isOpen: isSuccessOpen} = useDisclosure();
   const colorMode = mode('gray.600', 'gray.400');
   const cartItems = useSelector( state => state.cart );
   const { cart, subtotal, expressShipping } = cartItems;
@@ -35,12 +40,23 @@ export default function CheckoutOrderSummary(){
     }
   },[error, shippingAddress, total, expressShipping, shipping, dispatch])
 
-  const onPaymentSuccess = () => {
-    alert('order success');
+  const onPaymentSuccess = async (data) => {
+    dispatch(createOrder({
+      orderItems: cart,
+      shippingAddress,
+      paymentMethod: data.paymentSource,
+      paymentDetails: data,
+      shippingPrice: shipping(),
+      totalPrice: total(),
+      userInfo,
+    }))
+    dispatch(resetOrder());
+    dispatch(resetCart());
+    
   }
 
   const onPaymentError = () => {
-    alert('order error');
+    
   }
 
   return (
@@ -103,6 +119,8 @@ export default function CheckoutOrderSummary(){
         <p>or</p>
         <Link as={ReactLink} to='/products' ml='1'>Continue Shopping</Link>
       </Flex>
+      <PaymentErrorModal onClose={onErrorClose} onOpen={onErrorOpen} isOpen={isErrorOpen} />
+      <PaymentSuccessModal onClose={onSuccessClose} onOpen={onSuccessOpen} isOpen={isSuccessOpen} />
     </Stack>
     
   );

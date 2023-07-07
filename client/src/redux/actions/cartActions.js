@@ -2,6 +2,7 @@ import axios from 'axios';
 import { setLoading, setError, cartItemAdd, cartItemRemoval, setExpressShipping, clearCart } from '../slices/cart';
 
 export const addCartItem = (id, qty) => async (dispatch) => {
+  
   dispatch(setLoading(true));
   
   try {
@@ -37,6 +38,6 @@ export const setExpress = ( value ) => async ( dispatch ) => {
   dispatch(setExpressShipping(value));
 }
 
-export const resetCart = () => () => {
+export const resetCart = () => (dispatch) => {
   dispatch(clearCart());
 }
