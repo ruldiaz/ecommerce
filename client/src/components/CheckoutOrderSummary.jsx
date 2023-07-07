@@ -41,6 +41,7 @@ export default function CheckoutOrderSummary(){
   },[error, shippingAddress, total, expressShipping, shipping, dispatch])
 
   const onPaymentSuccess = async (data) => {
+    onSuccessOpen();
     dispatch(createOrder({
       orderItems: cart,
       shippingAddress,
@@ -56,7 +57,7 @@ export default function CheckoutOrderSummary(){
   }
 
   const onPaymentError = () => {
-    
+    onErrorOpen();
   }
 
   return (

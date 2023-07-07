@@ -24,7 +24,7 @@ export default function PayPalButton({total, onPaymentSuccess, onPaymentError, d
                     });
                 }}
                 onError={(err) => {
-                  onPaymentError(err);
+                  onPaymentError();
                 }}
             />
         </PayPalScriptProvider>
