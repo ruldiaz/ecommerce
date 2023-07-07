@@ -25,7 +25,15 @@ export default function CheckoutOrderSummary(){
   [expressShipping, subtotal]);
 
   const total = useCallback(()=> Number(shipping() === 0 ? Number(subtotal) : Number(subtotal) + shipping()).toFixed(2), 
-  [(shipping, subtotal)]);
+  [shipping, subtotal]);
+
+  useEffect(()=>{
+    if(!error){
+      setButtonDisabled(false);
+    }else{
+      setButtonDisabled(true);
+    }
+  },[error, shippingAddress, total, expressShipping, shipping, dispatch])
 
   const onPaymentSuccess = () => {
     alert('order success');
@@ -62,7 +70,7 @@ export default function CheckoutOrderSummary(){
             )}
           </Text>
         </Flex>
-          <PayPalButton total={total} onPaymentSuccess={onPaymentSuccess} onPaymentError={onPaymentError} />
+          
         <Flex justify='space-between'>
           <Text fontSize='lg' fontWeight='semibold' >
             Total
@@ -72,7 +80,7 @@ export default function CheckoutOrderSummary(){
           </Text>
         </Flex>
       </Stack>
-
+      <PayPalButton total={total} onPaymentSuccess={onPaymentSuccess} onPaymentError={onPaymentError} disabled={buttonDisabled} />
       <Box align='center'>
         <Text fontSize='sm'>Have questions ? or need help to complete your order ?</Text>
         <Flex justifyContent='center' color={mode('orange.500', 'orange.100')}>

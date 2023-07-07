@@ -10,7 +10,19 @@ import { setShippingAddress, setShippingAddressError } from '../redux/actions/or
 
 export default function ShippingInformation() {
   const dispatch = useDispatch();
+  const [formStateChanged, setFormStateChanged] = useState(false);
 
+  const setErrorState = (input, data) => {
+    if(!input) {
+      dispatch(setShippingAddress(data));
+    }
+    if((!formStateChanged && !input) || (formStateChanged && input)){
+      return;
+    }else{
+      setFormStateChanged(input);
+      dispatch(setShippingAddressError(input));
+    }
+  }
 
   return (
     <Formik initialValues={{address: '', postalCode: '', city: '', country: ''}}
@@ -20,8 +32,13 @@ export default function ShippingInformation() {
       city: Yup.string().required('This field is required.').min(2, 'This city is too short'),
       country: Yup.string().required('This field is required.').min(2, 'This country is too short'),
     })}>
-      {(formik)=><VStack as='form'>
-          <FormControl onChange={()=>{}}>
+      {(formik)=>
+      <VStack as='form'>
+          <FormControl onChange={()=>{
+            Object.keys(formik.errors).length === 0 && Object.keys(formik.touched).length >= 2 
+            ? setErrorState(false, formik.values) 
+            : setErrorState(true)
+          }}>
             <TextField name='address' placeholder='Street Address' label='Street Address' />
             <Flex>
               <Box flex='1' mr='10'>
