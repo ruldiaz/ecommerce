@@ -31,7 +31,9 @@ export default function ShippingInformation() {
       postalCode: Yup.string().required('This field is required.').min(2, 'This postal code is too short'),
       city: Yup.string().required('This field is required.').min(2, 'This city is too short'),
       country: Yup.string().required('This field is required.').min(2, 'This country is too short'),
-    })}>
+    })}
+    
+    >
       {(formik)=>
       <VStack as='form'>
           <FormControl onChange={()=>{
