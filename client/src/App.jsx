@@ -11,6 +11,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegistrationScreen from './screens/RegistrationScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import CheckoutScreen from './screens/CheckoutScreen';
+import YourOrdersScreen from './screens/YourOrdersScreen';
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -22,6 +23,7 @@ function AppRoutes() {
     { path: '/registration', element: <RegistrationScreen />},
     { path: '/profile', element: <ProfileScreen />},
     { path: '/checkout', element: <CheckoutScreen />},
+    { path: '/your-orders', element: <YourOrdersScreen />},
   ])
   return routes;
 }
