@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Flex, HStack, Link, IconButton, Icon, Text, useDisclosure, Button, Stack, useColorMode, useColorModeValue, useToast, MenuButton, MenuDivider, Menu, MenuList, MenuItem } from '@chakra-ui/react';
 import { CgProfile } from 'react-icons/cg';
-import { MdLocalShipping, MdLogout } from 'react-icons/md';
+import { MdLocalShipping, MdLogout, MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { FiShoppingCart} from 'react-icons/fi';
 import { Link as ReactLink } from 'react-router-dom';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
@@ -98,6 +98,17 @@ export default function Navbar() {
                     <MdLocalShipping />
                       <Text ml='2'>Your Orders</Text>
                   </MenuItem>
+                  {userInfo.isAdmin === 'true' && (
+                    <>
+                      <MenuDivider />
+                      <MenuItem as={ReactLink} to={'/admin-console'}>
+                        <MdOutlineAdminPanelSettings />
+                        <Text ml='2'>
+                          Admin Console
+                        </Text>
+                      </MenuItem>
+                    </>
+                  )}
                   <MenuDivider />
                   <MenuItem onClick={logoutHandler}>
                     <MdLogout />
