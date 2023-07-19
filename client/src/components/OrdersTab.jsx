@@ -78,8 +78,8 @@ export default function OrdersTab() {
                       <Text><i>City: </i>{order.shippingAddress.postalCode} {order.shippingAddress.city}</Text>
                       <Text><i>Country: </i>{order.shippingAddress.country}</Text>
                     </Td>
-                    <Td>{order.orderItems.map((item)=>(
-                      <Text>{item.qty} x {item.name}</Text>
+                    <Td>{order.orderItems.map((item, index)=>(
+                      <Text key={index}>{item.qty} x {item.name}</Text> // added index key
                     ))}</Td>
                     <Td>{order.paymentMethod}</Td>
                     <Td>${order.shippingPrice}</Td>

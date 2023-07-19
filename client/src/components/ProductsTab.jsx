@@ -3,6 +3,7 @@ import { Box, TableContainer, Th, Tr, Table, Td, Thead, Tbody, Button, useDisclo
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, resetProductError } from  '../redux/actions/productActions';
 import ConfirmRemovalAlert from "./ConfirmRemovalAlert";
+import ProductTableItem from "./ProductTableItem";
 
 export default function ProductsTab() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -74,7 +75,7 @@ export default function ProductsTab() {
             </Thead>
             <Tbody>
               {products.length > 0 && products.map((product)=>(
-                <p>{product.name}</p>
+                <ProductTableItem key={product._id} product={product} />
               ))}
             </Tbody>
           </Table>
