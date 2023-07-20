@@ -73,7 +73,7 @@ export default function ProductTableItem({product}){
               Remove Product
             </Button>
             <Button colorScheme='orange' w='160px' variant='outline' onClick={onSaveProduct}>
-              <DeleteIcon mr='5px' />
+              <MdOutlineDataSaverOn style={{marginRight: '5px'}} />
               Save Changes
             </Button>
           </VStack>

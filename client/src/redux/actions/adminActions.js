@@ -173,7 +173,7 @@ export const updateProduct = (brand, name, category, stock, price, id, productIs
 }
 
 // delete a product
-export const deleteProduct = (id) => async(dispatch, getSate) => {
+export const deleteProduct = (id) => async(dispatch, getState) => {
   const {
     user: { userInfo },
   } = getState();
@@ -203,7 +203,7 @@ export const deleteProduct = (id) => async(dispatch, getSate) => {
 }
 
 // upload a product
-export const uploadProduct = (newProduct) => async(dispatch, getSate) => {
+export const uploadProduct = (newProduct) => async(dispatch, getState) => {
   const {
     user: { userInfo },
   } = getState();

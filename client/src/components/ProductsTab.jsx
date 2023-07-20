@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, resetProductError } from  '../redux/actions/productActions';
 import ConfirmRemovalAlert from "./ConfirmRemovalAlert";
 import ProductTableItem from "./ProductTableItem";
+import AddNewProduct from "./AddNewProduct";
 
 export default function ProductsTab() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,7 +58,7 @@ export default function ProductsTab() {
               <AccordionPanel pb='4'>
                 <Table>
                   <Tbody>
-                    {/* <AddNewProduct /> */}
+                    <AddNewProduct />
                   </Tbody>
                 </Table>
               </AccordionPanel>
