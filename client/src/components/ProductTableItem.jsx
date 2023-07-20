@@ -7,7 +7,7 @@ import { updateProduct, deleteProduct } from '../redux/actions/adminActions';
 import ConfirmRemovalAlert from "./ConfirmRemovalAlert";
 
 export default function ProductTableItem({product}){
-  const calcelRef = useRef();
+  const cancelRef = useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [ brand, setBrand ] = useState(product.brand);
   const [ name, setName ] = useState(product.name);
@@ -41,13 +41,13 @@ export default function ProductTableItem({product}){
         </Td>
         <Td>
           <Flex direction='column' gap='2'>
-            <Input size='sm' value={brand} onChange={(e)=>setCategory(e.target.value)}  />
+            <Input size='sm' value={brand} onChange={(e)=>setBrand(e.target.value)}  />
             <Input size='sm' value={price} onChange={(e)=>setPrice(e.target.value)}  />
           </Flex>
         </Td>
         <Td>
           <Flex direction='column' gap='2'>
-            <Input size='sm' value={category} onChange={(e)=>setBrand(e.target.value)}  />
+            <Input size='sm' value={category} onChange={(e)=>setCategory(e.target.value)}  />
             <Input size='sm' value={name} onChange={(e)=>setName(e.target.value)}  />
           </Flex>
         </Td>
@@ -66,7 +66,20 @@ export default function ProductTableItem({product}){
             </FormControl>
           </Flex>
         </Td>
+        <Td>
+          <VStack>
+            <Button colorScheme='red' w='160px' variant='outline' onClick={openDeleteConfirmBox}>
+              <DeleteIcon mr='5px' />
+              Remove Product
+            </Button>
+            <Button colorScheme='orange' w='160px' variant='outline' onClick={onSaveProduct}>
+              <DeleteIcon mr='5px' />
+              Save Changes
+            </Button>
+          </VStack>
+        </Td>
       </Tr>
+      <ConfirmRemovalAlert isOpen={isOpen} onOpen={onOpen} onClose={onClose} cancelRef={cancelRef} itemToDelete={product} deleteAction={deleteProduct} />
     </>
   );
 }

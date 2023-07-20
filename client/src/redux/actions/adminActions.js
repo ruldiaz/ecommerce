@@ -144,7 +144,7 @@ export const resetErrorAndRemoval = () => async(dispatch) => {
 }
 
 // update product
-export const updateProduct = (brand, name, category, stock, price, id, productIsNew, description, image) => async(dispatch, getSate) => {
+export const updateProduct = (brand, name, category, stock, price, id, productIsNew, description, image) => async(dispatch, getState) => {
   const {
     user: { userInfo },
   } = getState();
