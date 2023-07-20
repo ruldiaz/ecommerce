@@ -1,14 +1,11 @@
-import React, { useEffect, useRef } from "react";
-import { Box, TableContainer, Th, Tr, Table, Td, Thead, Tbody, Button, useDisclosure, Alert, Stack, Spinner, AlertIcon, AlertTitle, AlertDescription, Wrap, useToast, Text, Flex, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel } from '@chakra-ui/react';
+import React, { useEffect } from "react";
+import { Box, Th, Tr, Table, Thead, Tbody, Alert, Stack, Spinner, AlertIcon, AlertTitle, AlertDescription, Wrap, useToast, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, resetProductError } from  '../redux/actions/productActions';
-import ConfirmRemovalAlert from "./ConfirmRemovalAlert";
 import ProductTableItem from "./ProductTableItem";
 import AddNewProduct from "./AddNewProduct";
 
 export default function ProductsTab() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = useRef();
   
   const dispatch = useDispatch();
   const admin = useSelector(state => state.admin);
