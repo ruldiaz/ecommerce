@@ -53,7 +53,7 @@ const createProductReview = asyncHandler(async(req, res)=>{
 // create a product
 const createNewProduct = asyncHandler(async(req, res) => {
   const { brand, name, category, stock, price, image, productIsNew, description } = req.body;
-  const newProduct = await Product.save({
+  const newProduct = await Product.create({
     brand,
     name,
     category,

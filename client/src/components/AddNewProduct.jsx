@@ -11,7 +11,7 @@ export default function AddNewProduct() {
   const [ category, setCategory ] = useState('');
   const [ stock, setStock] = useState('');
   const [ price, setPrice] = useState('');
-  const [ productIsNew, setProductIsNew ] = useState(false);
+  const [ productIsNew, setProductIsNew ] = useState(true);
   const [ description, setDescription ] = useState('');
   const [ image, setImage ] = useState('');
 
