@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import UsersTab from "../components/UsersTab";
 import OrdersTab from "../components/OrdersTab";
 import ProductsTab from "../components/ProductsTab";
+import ReviewsTab from "../components/ReviewsTab";
 
 export default function AdminConsoleScreen(){
   const user = useSelector( state => state.user );
@@ -23,7 +24,7 @@ export default function AdminConsoleScreen(){
               <TabList>
                 <Tab>Users</Tab>
                 <Tab>Products</Tab>
-                {/*<Tab>Reviews</Tab> */}
+                <Tab>Reviews</Tab>
                 <Tab>Orders</Tab>
               </TabList>
               <TabPanels>
@@ -32,6 +33,9 @@ export default function AdminConsoleScreen(){
                 </TabPanel>
                 <TabPanel>
                   <ProductsTab />
+                </TabPanel>
+                <TabPanel>
+                  <ReviewsTab />
                 </TabPanel>
                 <TabPanel>
                   <OrdersTab />
