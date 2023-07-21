@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 /client/src/client_id.js
+
+# production
+client/build
