@@ -27,3 +27,4 @@ dist-ssr
 
 # production
 client/build
+client/dist
