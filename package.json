@@ -1,0 +1,28 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "ecommerce app",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm run start --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run start:api\" \"npm run start:client\"",
+    "start:api": "cd api && npm start",
+    "start:client": "cd client && npm run dev",
+    "build": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruldiaz/ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruldiaz/ecommerce/issues"
+  },
+  "homepage": "https://github.com/ruldiaz/ecommerce#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
