@@ -9,7 +9,7 @@
     "start": "concurrently \"npm run start:api\" \"npm run start:client\"",
     "start:api": "cd api && npm start",
     "start:client": "cd client && npm run dev",
-    "build": "cd client && npm install && npm run build"
+    "build": "cd client && npm ci && npm run build"
   },
   "repository": {
     "type": "git",
