@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/ruldiaz/ecommerce#readme",
   "devDependencies": {
-    "concurrently": "^8.2.0",
-    "vite": "^4.4.7"
+    "concurrently": "^8.2.0"
   }
 }
