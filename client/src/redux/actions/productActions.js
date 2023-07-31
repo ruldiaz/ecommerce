@@ -5,7 +5,7 @@ import { setProducts, setLoading, setError, setProduct, productReviewed, resetEr
 export const getProducts = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios.get('https://techlines-pd2s.onrender.com/api/products');
+    const { data } = await axios.get('http://localhost:3001/api/products');
     dispatch(setProducts(data));
   } catch (error) {
     dispatch(
