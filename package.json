@@ -6,7 +6,8 @@
   "scripts": {
     "client": "npm run start --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"node api/server/index.js\" \"npm run start:client\"",
+    "start": "concurrently \"npm run start:api\" \"npm run start:client\"",
+    "start:api": "cd api && npm start",
     "start:client": "cd client && npm run dev",
     "build": "cd client && npm install && npm run build"
   },
@@ -21,15 +22,6 @@
     "url": "https://github.com/ruldiaz/ecommerce/issues"
   },
   "homepage": "https://github.com/ruldiaz/ecommerce#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2",
-    "express-async-handler": "^1.2.0",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.2.3"
-  },
   "devDependencies": {
     "concurrently": "^8.2.0"
   }
