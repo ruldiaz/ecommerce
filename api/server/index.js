@@ -16,7 +16,11 @@ connectToDatabase();
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: [
+    'http://localhost:5173',
+    'https://techlines-pd2s.onrender.com',
+    'https://64c935b74b5b940074f5f700--amazing-begonia-ed5a2f.netlify.app'
+  ]
 }));
 
 app.use(express.json());
