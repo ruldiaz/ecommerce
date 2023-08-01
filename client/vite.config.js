@@ -9,9 +9,9 @@ export default defineConfig({
   //     external: ['axios'],
   //   },
   // }
-  build: {
-    rollupOptions: {
-      external: ['axios'], // Remove 'axios' from this list
-    },
-  }
+  // build: {
+  //   rollupOptions: {
+  //     external: ['axios'], // Remove 'axios' from this list
+  //   },
+  // }
 })
