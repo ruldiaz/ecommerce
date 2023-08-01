@@ -15,8 +15,8 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch(
       setError(
-        error.response && error.response.data.message 
-        ? error.response.data.message 
+        error.response && error.response.data 
+        ? error.response.data 
         : error.message 
         ? error.message 
         : 'An unexpected error has occurred. Please try again later.'
@@ -44,8 +44,8 @@ export const register = (name, email, password) => async(dispatch) => {
   } catch (error) {
     dispatch(
       setError(
-        error.response && error.response.data.message 
-        ? error.response.data.message 
+        error.response && error.response.data 
+        ? error.response.data 
         : error.message 
         ? error.message 
         : 'An unexpected error has occurred. Please try again later.'
@@ -72,8 +72,8 @@ export const updateProfile = (id, name, email, password) => async(dispatch, getS
    } catch (error) {
     dispatch(
       setError(
-        error.response && error.response.data.message 
-        ? error.response.data.message 
+        error.response && error.response.data 
+        ? error.response.data 
         : error.message 
         ? error.message 
         : 'An unexpected error has occurred. Please try again later.'
@@ -104,8 +104,8 @@ export const getUserOrders = () => async(dispatch, getState) => {
   } catch (error) {
     dispatch(
       setError(
-        error.response && error.response.data.message 
-        ? error.response.data.message 
+        error.response && error.response.data 
+        ? error.response.data 
         : error.message 
         ? error.message 
         : 'An unexpected error has occurred. Please try again later.'
