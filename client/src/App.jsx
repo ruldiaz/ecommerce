@@ -13,6 +13,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import CheckoutScreen from './screens/CheckoutScreen';
 import YourOrdersScreen from './screens/YourOrdersScreen';
 import AdminConsoleScreen from './screens/AdminConsoleScreen';
+import OrderSuccessScreen from './screens/OrderSuccessScreen';
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -26,6 +27,7 @@ function AppRoutes() {
     { path: '/checkout', element: <CheckoutScreen />},
     { path: '/your-orders', element: <YourOrdersScreen />},
     { path: '/admin-console', element: <AdminConsoleScreen />},
+    { path: '/order-success', element: <OrderSuccessScreen />},
   ])
   return routes;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalBody, Button, Alert, AlertDescription, AlertTitle, AlertIcon, Wrap, useToast, Stack } from '@chakra-ui/react';
+import { Button, Alert, AlertDescription, AlertTitle, AlertIcon, Wrap, useToast, Stack } from '@chakra-ui/react';
 import { Link as ReactLink, useNavigate } from 'react-router-dom';
 import { logout } from '../redux/actions/userActions';
 import { useDispatch } from 'react-redux';
 
-export default function PaymentSuccessModal({isOpen, onClose}) {
+export default function OrderSuccessScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast();
@@ -16,12 +16,7 @@ export default function PaymentSuccessModal({isOpen, onClose}) {
   }
 
   return (
-    <>
-    <Modal size='full' isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalBody>
-          <Wrap justify='center' diretion='column' align='center' mt='20px'>
+          <Wrap justify='center' diretion='column' align='center' mt='20px' minH='100vh'>
             <Alert status='success' variant='subtle' flexDirection='column' alignItems='center' justifyContent='center' textAlign='center' height='auto'>
               <AlertIcon boxSize='55px' />
               <AlertTitle pt='8px' fontSize='xl'>Payment Successful !</AlertTitle>
@@ -39,9 +34,5 @@ export default function PaymentSuccessModal({isOpen, onClose}) {
               </Stack>
             </Alert>
           </Wrap>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
-    </>
   );
 }

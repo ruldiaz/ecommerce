@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from 'axios';
+import { Stack, Spinner } from '@chakra-ui/react';
 
 export default function PayPalButton({total, onPaymentSuccess, onPaymentError, disabled}) {
     const[paypalClient, setPayPalClient] = useState(null);
