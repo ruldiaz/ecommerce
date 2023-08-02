@@ -15,14 +15,23 @@ connectToDatabase();
 
 const app = express();
 
-app.use(cors({
-  origin: [
+// Custom CORS middleware to allow requests containing "netlify" in the domain
+const customCors = (req, callback) => {
+  const allowedOrigins = [
     'http://localhost:5173',
     'https://techlines-pd2s.onrender.com',
-    'https://64c935b74b5b940074f5f700--amazing-begonia-ed5a2f.netlify.app',
-    'https://64ca7430bf96d90bca1913ed--timely-swan-14e1d8.netlify.app/'
-  ]
-}));
+    /netlify/i, // Allow any origin containing the word "netlify" (case-insensitive)
+  ];
+
+  const origin = req.headers.origin;
+  if (allowedOrigins.some((pattern) => pattern.test(origin))) {
+    callback(null, true);
+  } else {
+    callback(new Error('Not allowed by CORS'));
+  }
+};
+
+app.use(cors(customCors));
 
 app.use(express.json());
 app.use('/api/products', productRoutes);
