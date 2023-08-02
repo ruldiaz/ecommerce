@@ -26,7 +26,7 @@ export default function CheckoutOrderSummary(){
   const navigate = useNavigate();
   const toast = useToast();
 
-  const shipping = useCallback(()=>(expressShipping === 'true' ? 14.99 : subtotal <= 1000 ? 4.99 : 0), 
+  const shipping = useCallback(()=>(expressShipping === 'true' ? 14.99 : subtotal <= 1000 ? 0.01 : 0), 
   [expressShipping, subtotal]);
 
   const total = useCallback(()=> Number(shipping() === 0 ? Number(subtotal) : Number(subtotal) + shipping()).toFixed(2), 
