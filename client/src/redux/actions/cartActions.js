@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { setLoading, setError, cartItemAdd, cartItemRemoval, setExpressShipping, clearCart } from '../slices/cart';
+import configProxy from '../../proxy';
 
 export const addCartItem = (id, qty) => async (dispatch) => {
   
   dispatch(setLoading(true));
   
   try {
-    const { data } = await axios.get(`http://localhost:3001/api/products/${id}`);
+    const { data } = await axios.get(`${configProxy.backendRoute}/api/products/${id}`);
     const itemToAdd = {
       id: data._id,
       name: data.name,

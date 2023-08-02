@@ -1,11 +1,11 @@
 import axios from 'axios';
-
+import configProxy from '../../proxy';
 import { setProducts, setLoading, setError, setProduct, productReviewed, resetError } from '../slices/products';
 
 export const getProducts = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios.get('https://techlines-pd2s.onrender.com/api/products');
+    const { data } = await axios.get(`${configProxy.backendRoute}/api/products`);
     dispatch(setProducts(data));
   } catch (error) {
     dispatch(
@@ -19,7 +19,7 @@ export const getProducts = () => async (dispatch) => {
 export const getProduct = (id) => async(dispatch) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios.get(`http://localhost:3001/api/products/${id}`);
+    const { data } = await axios.get(`${configProxy.backendRoute}/api/products/${id}`);
     dispatch(setProduct(data));
   } catch (error) {
     dispatch(
@@ -43,7 +43,7 @@ export const createProductReview = (productId, userId, comment, rating, title) =
         'Content-Type': 'application/json',
       },
     }
-    const { data } = await axios.post(`http://localhost:3001/api/products/reviews/${productId}`, {comment, userId, rating, title}, config);
+    const { data } = await axios.post(`${configProxy.backendRoute}/api/products/reviews/${productId}`, {comment, userId, rating, title}, config);
     localStorage.setItem('userInfo', JSON.stringify(data));
     dispatch(productReviewed());
    } catch (error) {

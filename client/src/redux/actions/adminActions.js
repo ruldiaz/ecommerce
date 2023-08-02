@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getUsers, userDelete, resetError, setError, setLoading, orderDelete, setDeliveredFlag, getOrders } from '../slices/admin';
 import { setProducts, setProductUpdateFlag, setReviewRemovalFlag } from '../slices/products';
+import configProxy from '../../proxy';
 
 export const getAllUsers = () => async (dispatch, getState) => {
   const {
@@ -14,7 +15,7 @@ export const getAllUsers = () => async (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.get('http://localhost:3001/api/users', config);
+    const {data} = await axios.get(`${configProxy.backendRoute}/api/users`, config);
     dispatch(getUsers(data));
   } catch (error) {
     dispatch(
@@ -41,7 +42,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.delete(`http://localhost:3001/api/users/${id}`, config);
+    const {data} = await axios.delete(`${configProxy.backendRoute}/api/users/${id}`, config);
     dispatch(userDelete(data));
   } catch (error) {
     dispatch(
@@ -69,7 +70,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.get('http://localhost:3001/api/orders', config);
+    const {data} = await axios.get(`${configProxy.backendRoute}/api/orders`, config);
     dispatch(getOrders(data));
   } catch (error) {
     dispatch(
@@ -96,7 +97,7 @@ export const deleteOrder = (id) => async (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.delete(`http://localhost:3001/api/orders/${id}`, config);
+    const {data} = await axios.delete(`${configProxy.backendRoute}/api/orders/${id}`, config);
     dispatch(orderDelete(data));
   } catch (error) {
     dispatch(
@@ -124,7 +125,7 @@ export const setDelivered = (id) => async (dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.put(`http://localhost:3001/api/orders/${id}`, {}, config);
+    const {data} = await axios.put(`${configProxy.backendRoute}/api/orders/${id}`, {}, config);
     dispatch(setDeliveredFlag());
   } catch (error) {
     dispatch(
@@ -156,7 +157,7 @@ export const updateProduct = (brand, name, category, stock, price, id, productIs
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.put(`http://localhost:3001/api/products`, {brand, name, category, stock, price, id, productIsNew, description, image}, config);
+    const {data} = await axios.put(`${configProxy.backendRoute}/api/products`, {brand, name, category, stock, price, id, productIsNew, description, image}, config);
     dispatch(setProducts(data));
     dispatch(setProductUpdateFlag());
   } catch (error) {
@@ -185,7 +186,7 @@ export const deleteProduct = (id) => async(dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.delete(`http://localhost:3001/api/products/${id}`, config);
+    const {data} = await axios.delete(`${configProxy.backendRoute}/api/products/${id}`, config);
     dispatch(setProducts(data));
     dispatch(setProductUpdateFlag());
     dispatch(resetError());
@@ -215,7 +216,7 @@ export const uploadProduct = (newProduct) => async(dispatch, getState) => {
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.post(`http://localhost:3001/api/products`, newProduct, config);
+    const {data} = await axios.post(`${configProxy.backendRoute}/api/products`, newProduct, config);
     dispatch(setProducts(data));
     dispatch(setProductUpdateFlag());
   } catch (error) {
@@ -243,7 +244,7 @@ export const removeReview = (productId, reviewId) => async(dispatch, getState) =
         'Content-Type': 'application/json',
       },
     }
-    const {data} = await axios.put(`http://localhost:3001/api/products/${productId}/${reviewId}`, {}, config);
+    const {data} = await axios.put(`${configProxy.backendRoute}/api/products/${productId}/${reviewId}`, {}, config);
     dispatch(setProducts(data));
     dispatch(setReviewRemovalFlag());
   } catch (error) {
