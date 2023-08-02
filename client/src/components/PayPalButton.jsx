@@ -2,13 +2,14 @@ import React, { useEffect, useState} from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import axios from 'axios';
 import { Stack, Spinner } from '@chakra-ui/react';
+import configProxy from '../../src/proxy.js';
 
 export default function PayPalButton({total, onPaymentSuccess, onPaymentError, disabled}) {
     const[paypalClient, setPayPalClient] = useState(null);
 
     useEffect(()=>{
         const paypalKey = async()=>{
-            const {data: clientId} = await axios.get('http://localhost:3001/api/config/paypal');
+            const {data: clientId} = await axios.get(`${configProxy.backendRoute}/api/config/paypal`);
             setPayPalClient(clientId);
         }
         paypalKey();
