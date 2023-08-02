@@ -15,14 +15,7 @@ connectToDatabase();
 
 const app = express();
 
-app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://techlines-pd2s.onrender.com',
-    'https://64c935b74b5b940074f5f700--amazing-begonia-ed5a2f.netlify.app',
-    'https://64ca7430bf96d90bca1913ed--timely-swan-14e1d8.netlify.app/'
-  ]
-}));
+app.use(cors());
 
 app.use(express.json());
 app.use('/api/products', productRoutes);
